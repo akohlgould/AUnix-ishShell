@@ -24,8 +24,6 @@ public class Cat extends ShellCommand {
 
     @Override
     protected void runCommand() throws IOException {
-        // TODO: implement Cat.runCommand
-        // throw new UnsupportedOperationException("TODO: implement Cat.runCommand");
         // prints the contents of all files passed as arguments, in the order they were
         // passed.
         if (cmdArgs.length != 0) {
