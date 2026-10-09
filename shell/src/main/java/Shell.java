@@ -69,8 +69,18 @@ public class Shell {
      * @throws Exception if a match class cannot be found
      */
     private static String findCommandClass(String command) throws Exception {
-        // TODO: implement Shell.findCommandClass
-        throw new UnsupportedOperationException("TODO: implement Shell.findCommandClass");
+        File dir = PATH.toFile();
+        File[] files = dir.listFiles((d, name) -> name.endsWith(".class"));
+        if (files != null) {
+            for (File file : files) {
+                String fileName = file.getName();
+                String className = fileName.substring(0, fileName.length() - ".class".length());
+                if (classNameToCommandName(className).equals(command)) {
+                    return className;
+                }
+            }
+        }
+        throw new Exception(command + ": command not found");
     }
 
     /**
