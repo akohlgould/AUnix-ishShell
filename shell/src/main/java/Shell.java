@@ -113,8 +113,20 @@ public class Shell {
      * Runs the Read-Eval-Print Loop of the Shell. The command "exit" ends the loop.
      */
     public void runRepl() {
-        // TODO: implement Shell.runRepl
-        throw new UnsupportedOperationException("TODO: implement Shell.runRepl");
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print(COMMAND_PROMPT);
+            if (!scanner.hasNextLine()) {
+                break;
+            }
+            String line = scanner.nextLine().trim();
+            if (line.equals("exit")) {
+                break;
+            }
+            if (!line.isEmpty()) {
+                processInput(line);
+            }
+        }
     }
 
     /**
